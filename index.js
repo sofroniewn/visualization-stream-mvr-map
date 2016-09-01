@@ -41,7 +41,7 @@ module.exports = function () {
 
   return {
     createStream: function (initMap) {
-      map = initMap
+      map = convertMap(initMap)
       var canvas = document.createElement('canvas')
       canvas.width = 600
       canvas.height = 800
@@ -126,7 +126,7 @@ module.exports = function () {
       })
 
       return writer.obj(function (data, enc, callback) {
-        position = [data.position.lateral, data.position.forward]
+        position = [data.positionLateral, data.positionForward]
         hit = data.hit
         callback()
       })
